@@ -1,0 +1,53 @@
+@model UserPanelApp.ViewModels.DashboardIndexViewModel
+
+@{
+    ViewData["Title"] = "Panel użytkownika";
+}
+
+<h1>Panel użytkownika</h1>
+
+<p>Zalogowano jako: <strong>@User.Identity?.Name</strong></p>
+
+<h3>Dodaj prywatną notatkę</h3>
+
+<form asp-controller="Dashboard" asp-action="AddNote" method="post" class="col-md-7">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="mb-3">
+        <label asp-for="NewNote.Title" class="form-label">Tytuł</label>
+        <input asp-for="NewNote.Title" class="form-control" />
+        <span asp-validation-for="NewNote.Title" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="NewNote.Content" class="form-label">Treść</label>
+        <textarea asp-for="NewNote.Content" class="form-control" rows="4"></textarea>
+        <span asp-validation-for="NewNote.Content" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Zapisz notatkę</button>
+</form>
+
+<hr />
+
+<h3>Moje notatki</h3>
+
+@if (!Model.Notes.Any())
+{
+    <p>Nie masz jeszcze żadnych notatek.</p>
+}
+else
+{
+    foreach (var note in Model.Notes)
+    {
+        <div class="border rounded p-3 mb-3">
+            <h5>@note.Title</h5>
+            <p>@note.Content</p>
+            <small>@note.CreatedAt.ToLocalTime()</small>
+        </div>
+    }
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
