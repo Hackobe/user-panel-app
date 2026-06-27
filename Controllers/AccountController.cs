@@ -77,10 +77,7 @@ public class AccountController : Controller
         var email = model.Email.Trim().ToLowerInvariant();
         var user = await _db.AppUsers.FirstOrDefaultAsync(u => u.Email == email);
 
-        var loginIsCorrect = user != null &&
-                             BCrypt.Net.BCrypt.Verify(model.Password, user.PasswordHash);
-
-        if (!loginIsCorrect)
+        if (user == null || !BCrypt.Net.BCrypt.Verify(model.Password, user.PasswordHash))
         {
             ModelState.AddModelError(string.Empty, "Nieprawidłowy email lub hasło.");
             return View(model);
