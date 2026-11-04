@@ -9,11 +9,18 @@
 
     <ItemGroup>
       <PackageReference Include="BCrypt.Net-Next" Version="4.2.0" />
-      <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.*">
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.33">
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         <PrivateAssets>all</PrivateAssets>
       </PackageReference>
-      <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.*" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.33" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <!-- The test project lives below the web project directory. -->
+        <Compile Remove="UserPanelApp.Tests/**/*.cs" />
+        <Content Remove="UserPanelApp.Tests/**" />
+        <None Remove="UserPanelApp.Tests/**" />
     </ItemGroup>
 
 </Project>

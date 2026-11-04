@@ -77,3 +77,6 @@ static async Task SeedAdminAsync(AppDbContext db, IConfiguration configuration)
 
     await db.SaveChangesAsync();
 }
+
+// Allows the integration tests to host the real application.
+public partial class Program { }
