@@ -17,6 +17,14 @@ Edukacyjna aplikacja ASP.NET Core MVC: rejestracja i logowanie, prywatne notatki
 
 Notatki nie mają operacji edycji, usuwania ani osobnej strony szczegółów. Administrator przegląda listę kont; nie ma panelu zarządzania rolami ani dostępu do wszystkich notatek.
 
+## Zrzuty ekranu
+
+Widoki działającej aplikacji z fikcyjnymi danymi demonstracyjnymi.
+
+![Panel użytkownika z prywatną notatką](docs/screenshots/user-notes.jpg)
+
+![Lista kont w panelu administratora](docs/screenshots/admin-panel.jpg)
+
 ## Technologie i organizacja kodu
 
 .NET 8 / C#, ASP.NET Core MVC, Entity Framework Core 8, SQLite, BCrypt.Net-Next, Bootstrap oraz xUnit i `Microsoft.AspNetCore.Mvc.Testing`.
